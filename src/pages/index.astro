@@ -1,5 +1,13 @@
 ---
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+    .map((entry: { id: any; data: any; }) => ({
+        id: entry.id,
+        ...entry.data,
+    }))
+    .sort((a: { order: any; }, b: { order: any; }) => (a.order ?? 999) - (b.order ?? 999));
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -121,41 +129,39 @@ import '../styles/global.css';
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="reveal project-card group glass rounded-3xl overflow-hidden transition duration-500">
-                    <div class="h-64 overflow-hidden bg-slate-800 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-700 text-6xl">
-                            <i class="fas fa-code"></i>
+                {projects.map((project: { icon: any; link: string | URL | null | undefined; title: unknown; description: unknown; tags: unknown[]; }, index: number) => (
+                    <div
+                        class="reveal project-card group glass rounded-3xl overflow-hidden transition duration-500"
+                        style={`transition-delay: ${0.1 + index * 0.1}s;`}
+                    >
+                        <div class="h-64 overflow-hidden bg-slate-800 relative">
+                            <div class="absolute inset-0 flex items-center justify-center text-slate-700 text-6xl">
+                                <i class={project.icon ?? 'fas fa-code'}></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">
+                                {project.link ? (
+                                    <a href={project.link} target="_blank" rel="noreferrer" class="hover:text-sky-400 transition">
+                                        {project.title}
+                                    </a>
+                                ) : (
+                                    project.title
+                                )}
+                            </h3>
+                            <p class="text-gray-400 mb-4">{project.description}</p>
+                            {project.tags?.length ? (
+                                <div class="flex gap-3 flex-wrap">
+                                    {project.tags.map((tag: unknown) => (
+                                        <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            ) : null}
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-2">Enterprise Design System</h3>
-                        <p class="text-gray-400 mb-4">A complete UI Kit built with Nuxt 3 and Tailwind CSS following Atomic Design principles for scalability.</p>
-                        <div class="flex gap-3">
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">Nuxt</span>
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">TS</span>
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">Vitest</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="reveal project-card group glass rounded-3xl overflow-hidden transition duration-500" style="transition-delay: 0.2s;">
-                    <div class="h-64 overflow-hidden bg-slate-800 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-700 text-6xl">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-2">E-commerce Headless</h3>
-                        <p class="text-gray-400 mb-4">High-performance storefront with fast indexing and optimized core web vitals using Vite and Vue 3.</p>
-                        <div class="flex gap-3">
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">Vue 3</span>
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">Vite</span>
-                            <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     </section>
