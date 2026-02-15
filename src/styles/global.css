@@ -246,6 +246,22 @@
 		@apply text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20;
 	}
 
+	.projects__empty {
+		@apply rounded-3xl border border-slate-800/80 bg-slate-900/40 px-10 py-16 text-center;
+	}
+
+	.projects__empty-icon {
+		@apply mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-800 text-2xl text-slate-500;
+	}
+
+	.projects__empty-title {
+		@apply text-2xl font-semibold;
+	}
+
+	.projects__empty-text {
+		@apply mt-3 text-gray-400;
+	}
+
 	.projects__card:hover img {
 		transform: scale(1.05);
 	}
