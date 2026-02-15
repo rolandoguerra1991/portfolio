@@ -10,7 +10,7 @@ const projects = (await getCollection('projects'))
     .sort((a: { order: any; }, b: { order: any; }) => (a.order ?? 999) - (b.order ?? 999));
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="page-root">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -20,140 +20,140 @@ const projects = (await getCollection('projects'))
 		<title>Rolando Guerra | Frontend Developer</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	</head>
-	<body class="overflow-x-hidden">
+    <body class="page">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-bold gradient-text">Rolando Guerra</div>
-            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
-                <a href="#home" class="hover:text-sky-400 transition">Home</a>
-                <a href="#stack" class="hover:text-sky-400 transition">Stack</a>
-                <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
-                <a href="#experience" class="hover:text-sky-400 transition">Experience</a>
-                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+    <nav class="site-nav">
+        <div class="page__container site-nav__inner">
+            <div class="site-nav__brand">Rolando Guerra</div>
+            <div class="site-nav__links">
+                <a href="#home" class="site-nav__link">Home</a>
+                <a href="#stack" class="site-nav__link">Stack</a>
+                <a href="#projects" class="site-nav__link">Projects</a>
+                <a href="#experience" class="site-nav__link">Experience</a>
+                <a href="#contact" class="site-nav__link">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-12">
-        <div class="container mx-auto px-6 flex flex-col items-center text-center">
+    <section id="home" class="hero">
+        <div class="page__container hero__inner">
 
             <!-- Profile Image Container -->
-            <div class="reveal mb-8 relative" style="transition-delay: 0.1s;">
-                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full p-1 bg-linear-to-tr from-sky-500 to-indigo-500 profile-glow">
-                    <div class="w-full h-full rounded-full overflow-hidden bg-slate-800 border-4 border-[#0f172a]">
+            <div class="reveal hero__profile" style="transition-delay: 0.1s;">
+                <div class="hero__profile-ring">
+                    <div class="hero__profile-frame">
                         <!-- Replace the src with your actual image path -->
-                        <img src="/portfolio/photo.png" alt="Rolando Guerra" class="w-full h-full object-cover">
+                        <img src="/portfolio/photo.png" alt="Rolando Guerra" class="hero__profile-image">
                     </div>
                 </div>
                 <!-- Badge (Optional) -->
-                <div class="absolute bottom-2 right-2 bg-sky-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                <div class="hero__profile-badge">
                     Available
                 </div>
             </div>
 
-            <h1 class="reveal text-4xl md:text-7xl font-bold mb-6">
-                Crafting high-end <br><span class="gradient-text">web experiences</span>
+            <h1 class="reveal hero__title">
+                Crafting high-end <br><span class="hero__title-accent">web experiences</span>
             </h1>
-            <p class="reveal text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10" style="transition-delay: 0.2s;">
+            <p class="reveal hero__subtitle" style="transition-delay: 0.2s;">
                 I am a frontend web developer with experience in creating reusable components using the Atomic Design methodology.
             </p>
-            <div class="reveal flex justify-center space-x-4" style="transition-delay: 0.4s;">
-                <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg shadow-sky-500/20">View Projects</a>
-                <a href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/" target="_blank" class="glass px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition">LinkedIn</a>
+            <div class="reveal hero__actions" style="transition-delay: 0.4s;">
+                <a href="#projects" class="hero__button hero__button--primary">View Projects</a>
+                <a href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/" target="_blank" class="hero__button hero__button--ghost">LinkedIn</a>
             </div>
         </div>
     </section>
 
     <!-- Tools Section -->
-    <section id="stack" class="py-20 bg-slate-900/30">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="reveal text-3xl md:text-4xl font-bold mb-4">Full Stack & Tools</h2>
-                <div class="reveal w-20 h-1 bg-sky-500 mx-auto rounded-full"></div>
+    <section id="stack" class="stack">
+        <div class="page__container">
+            <div class="stack__header">
+                <h2 class="reveal stack__title">Full Stack & Tools</h2>
+                <div class="reveal stack__divider"></div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.1s;">
-                    <i class="fab fa-js-square text-4xl text-blue-500 mb-3"></i>
-                    <h3 class="font-semibold">TypeScript</h3>
-                    <p class="text-xs text-gray-500">Robust Code</p>
+            <div class="stack__grid">
+                <div class="reveal stack__card" style="transition-delay: 0.1s;">
+                    <i class="stack__icon stack__icon--blue fab fa-js-square"></i>
+                    <h3 class="stack__label">TypeScript</h3>
+                    <p class="stack__hint">Robust Code</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.2s;">
-                    <div class="text-3xl text-emerald-400 mb-3 font-bold">N</div>
-                    <h3 class="font-semibold">Nuxt.js</h3>
-                    <p class="text-xs text-gray-500">Framework</p>
+                <div class="reveal stack__card" style="transition-delay: 0.2s;">
+                    <div class="stack__icon stack__icon--mono stack__icon--emerald-soft">N</div>
+                    <h3 class="stack__label">Nuxt.js</h3>
+                    <p class="stack__hint">Framework</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.3s;">
-                    <i class="fab fa-vuejs text-4xl text-emerald-500 mb-3"></i>
-                    <h3 class="font-semibold">Vue.js</h3>
-                    <p class="text-xs text-gray-500">UI Library</p>
+                <div class="reveal stack__card" style="transition-delay: 0.3s;">
+                    <i class="stack__icon stack__icon--emerald fab fa-vuejs"></i>
+                    <h3 class="stack__label">Vue.js</h3>
+                    <p class="stack__hint">UI Library</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.4s;">
-                    <i class="fas fa-wind text-4xl text-sky-400 mb-3"></i>
-                    <h3 class="font-semibold">Tailwind</h3>
-                    <p class="text-xs text-gray-500">Atomic CSS</p>
+                <div class="reveal stack__card" style="transition-delay: 0.4s;">
+                    <i class="stack__icon stack__icon--sky fas fa-wind"></i>
+                    <h3 class="stack__label">Tailwind</h3>
+                    <p class="stack__hint">Atomic CSS</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.5s;">
-                    <i class="fas fa-bolt text-4xl text-yellow-400 mb-3"></i>
-                    <h3 class="font-semibold">Vite</h3>
-                    <p class="text-xs text-gray-500">Fast Build</p>
+                <div class="reveal stack__card" style="transition-delay: 0.5s;">
+                    <i class="stack__icon stack__icon--yellow fas fa-bolt"></i>
+                    <h3 class="stack__label">Vite</h3>
+                    <p class="stack__hint">Fast Build</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.6s;">
-                    <i class="fas fa-vial text-4xl text-lime-500 mb-3"></i>
-                    <h3 class="font-semibold">Vitest</h3>
-                    <p class="text-xs text-gray-500">Testing</p>
+                <div class="reveal stack__card" style="transition-delay: 0.6s;">
+                    <i class="stack__icon stack__icon--lime fas fa-vial"></i>
+                    <h3 class="stack__label">Vitest</h3>
+                    <p class="stack__hint">Testing</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.7s;">
-                    <i class="fab fa-git-alt text-4xl text-orange-500 mb-3"></i>
-                    <h3 class="font-semibold">Git</h3>
-                    <p class="text-xs text-gray-500">Version Control</p>
+                <div class="reveal stack__card" style="transition-delay: 0.7s;">
+                    <i class="stack__icon stack__icon--orange fab fa-git-alt"></i>
+                    <h3 class="stack__label">Git</h3>
+                    <p class="stack__hint">Version Control</p>
                 </div>
-                <div class="reveal tech-card glass p-6 rounded-2xl flex flex-col items-center transition duration-300" style="transition-delay: 0.8s;">
-                    <i class="fab fa-node-js text-4xl text-green-500 mb-3"></i>
-                    <h3 class="font-semibold">Node.js</h3>
-                    <p class="text-xs text-gray-500">Runtime</p>
+                <div class="reveal stack__card" style="transition-delay: 0.8s;">
+                    <i class="stack__icon stack__icon--green fab fa-node-js"></i>
+                    <h3 class="stack__label">Node.js</h3>
+                    <p class="stack__hint">Runtime</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="reveal text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                <div class="reveal w-20 h-1 bg-sky-500 mx-auto rounded-full"></div>
+    <section id="projects" class="projects">
+        <div class="page__container">
+            <div class="projects__header">
+                <h2 class="reveal projects__title">Featured Projects</h2>
+                <div class="reveal projects__divider"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="projects__grid">
                 {projects.map((project: { icon: any; link: string | URL | null | undefined; title: unknown; description: unknown; tags: unknown[]; }, index: number) => (
                     <div
-                        class="reveal project-card group glass rounded-3xl overflow-hidden transition duration-500"
+                        class="reveal projects__card"
                         style={`transition-delay: ${0.1 + index * 0.1}s;`}
                     >
-                        <div class="h-64 overflow-hidden bg-slate-800 relative">
-                            <div class="absolute inset-0 flex items-center justify-center text-slate-700 text-6xl">
+                        <div class="projects__media">
+                            <div class="projects__media-icon">
                                 <i class={project.icon ?? 'fas fa-code'}></i>
                             </div>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold mb-2">
+                        <div class="projects__body">
+                            <h3 class="projects__name">
                                 {project.link ? (
-                                    <a href={project.link} target="_blank" rel="noreferrer" class="hover:text-sky-400 transition">
+                                    <a href={project.link} target="_blank" rel="noreferrer" class="projects__link">
                                         {project.title}
                                     </a>
                                 ) : (
                                     project.title
                                 )}
                             </h3>
-                            <p class="text-gray-400 mb-4">{project.description}</p>
+                            <p class="projects__description">{project.description}</p>
                             {project.tags?.length ? (
-                                <div class="flex gap-3 flex-wrap">
+                                <div class="projects__tags">
                                     {project.tags.map((tag: unknown) => (
-                                        <span class="text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20">
+                                        <span class="projects__tag">
                                             {tag}
                                         </span>
                                     ))}
@@ -167,68 +167,64 @@ const projects = (await getCollection('projects'))
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-slate-900/50">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-12">
-                <h2 class="reveal text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
-                <div class="reveal w-20 h-1 bg-sky-500 mx-auto rounded-full"></div>
+    <section id="experience" class="experience">
+        <div class="page__container experience__container">
+            <div class="experience__header">
+                <h2 class="reveal experience__title">Professional Experience</h2>
+                <div class="reveal experience__divider"></div>
             </div>
 
-            <div class="border-l-2 border-slate-800 ml-4 md:ml-0 md:mx-auto space-y-12 relative">
+            <div class="experience__timeline">
                 <!-- Software Engineer - 8020REI -->
-                <div class="reveal relative pl-8" style="transition-delay: 0.1s;">
-                    <div class="timeline-item"></div>
-                    <span class="text-sky-400 font-bold text-sm">Jan 2023 - Feb 2026</span>
-                    <h3 class="text-xl font-bold">Software Engineer</h3>
-                    <p class="text-sky-500 text-sm font-medium mb-1">8020REI • Full-time • Remote (USA)</p>
-                    <p class="text-gray-400 italic mb-2">Developed core frontend solutions using Nuxt, Vue, and TypeScript, leveraging Atomic Design for high-quality reusable components.</p>
-                    <p class="text-gray-400">Took ownership of the frontend development for key tools, significantly enhancing user experience and platform interface consistency.</p>
+                <div class="reveal experience__item" style="transition-delay: 0.1s;">
+                    <span class="experience__date">Jan 2023 - Feb 2026</span>
+                    <h3 class="experience__role">Software Engineer</h3>
+                    <p class="experience__company">8020REI • Full-time • Remote (USA)</p>
+                    <p class="experience__summary">Developed core frontend solutions using Nuxt, Vue, and TypeScript, leveraging Atomic Design for high-quality reusable components.</p>
+                    <p class="experience__detail">Took ownership of the frontend development for key tools, significantly enhancing user experience and platform interface consistency.</p>
                 </div>
 
                 <!-- Web Developer - 4casters -->
-                <div class="reveal relative pl-8" style="transition-delay: 0.2s;">
-                    <div class="timeline-item"></div>
-                    <span class="text-sky-400 font-bold text-sm">Dec 2020 - Jan 2023</span>
-                    <h3 class="text-xl font-bold">Web Developer</h3>
-                    <p class="text-sky-500 text-sm font-medium mb-1">4casters • Freelance</p>
-                    <p class="text-gray-400">MEVN stack development (MongoDB, Express, Vue.js, Node.js), utilizing Bootstrap and modern frontend practices.</p>
+                <div class="reveal experience__item" style="transition-delay: 0.2s;">
+                    <span class="experience__date">Dec 2020 - Jan 2023</span>
+                    <h3 class="experience__role">Web Developer</h3>
+                    <p class="experience__company">4casters • Freelance</p>
+                    <p class="experience__detail">MEVN stack development (MongoDB, Express, Vue.js, Node.js), utilizing Bootstrap and modern frontend practices.</p>
                 </div>
 
                 <!-- Web Developer - Grupo Hostienda -->
-                <div class="reveal relative pl-8" style="transition-delay: 0.3s;">
-                    <div class="timeline-item"></div>
-                    <span class="text-sky-400 font-bold text-sm">Sep 2018 - Jan 2023</span>
-                    <h3 class="text-xl font-bold">Web Developer</h3>
-                    <p class="text-sky-500 text-sm font-medium mb-1">Grupo Hostienda • Spain</p>
-                    <p class="text-gray-400">Fullstack development focused on PHP (Laravel) and Vue.js for enterprise-level web applications.</p>
+                <div class="reveal experience__item" style="transition-delay: 0.3s;">
+                    <span class="experience__date">Sep 2018 - Jan 2023</span>
+                    <h3 class="experience__role">Web Developer</h3>
+                    <p class="experience__company">Grupo Hostienda • Spain</p>
+                    <p class="experience__detail">Fullstack development focused on PHP (Laravel) and Vue.js for enterprise-level web applications.</p>
                 </div>
 
                 <!-- Web Developer - PinttoSoft -->
-                <div class="reveal relative pl-8" style="transition-delay: 0.4s;">
-                    <div class="timeline-item"></div>
-                    <span class="text-sky-400 font-bold text-sm">Feb 2018 - Sep 2018</span>
-                    <h3 class="text-xl font-bold">Web Developer</h3>
-                    <p class="text-sky-500 text-sm font-medium mb-1">PinttoSoft • Venezuela</p>
-                    <p class="text-gray-400">Frontend and backend tasks using Laravel and Bootstrap for various client projects.</p>
+                <div class="reveal experience__item" style="transition-delay: 0.4s;">
+                    <span class="experience__date">Feb 2018 - Sep 2018</span>
+                    <h3 class="experience__role">Web Developer</h3>
+                    <p class="experience__company">PinttoSoft • Venezuela</p>
+                    <p class="experience__detail">Frontend and backend tasks using Laravel and Bootstrap for various client projects.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="py-16 border-t border-slate-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="reveal text-3xl font-bold mb-6">Let's work together</h2>
-            <p class="reveal text-gray-400 mb-8 max-w-lg mx-auto">I'm currently available for new opportunities and collaborations.</p>
-            <div class="flex justify-center space-x-6 text-gray-400">
-                <a href="https://github.com/rolandoguerra1991" target="_blank" class="hover:text-white transition text-3xl" title="GitHub">
+    <footer id="contact" class="site-footer">
+        <div class="page__container site-footer__inner">
+            <h2 class="reveal site-footer__title">Let's work together</h2>
+            <p class="reveal site-footer__subtitle">I'm currently available for new opportunities and collaborations.</p>
+            <div class="site-footer__links">
+                <a href="https://github.com/rolandoguerra1991" target="_blank" class="site-footer__link" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/" target="_blank" class="hover:text-white transition text-3xl" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/" target="_blank" class="site-footer__link" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
-            <p class="mt-12 text-gray-600 text-sm">© 2026 Rolando Guerra.</p>
+            <p class="site-footer__legal">© 2026 Rolando Guerra.</p>
         </div>
     </footer>
 
@@ -240,7 +236,7 @@ const projects = (await getCollection('projects'))
                 const elementTop = el.getBoundingClientRect().top;
                 const elementVisible = 80;
                 if (elementTop < windowHeight - elementVisible) {
-                    el.classList.add("active");
+                    el.classList.add("reveal--active");
                 }
             });
         }

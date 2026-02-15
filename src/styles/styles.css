@@ -12,47 +12,7 @@ body {
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.reveal.active {
+.reveal--active {
   opacity: 1;
   transform: translateY(0);
-}
-
-.glass {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tech-card:hover {
-  transform: translateY(-5px);
-  border-color: #38bdf8;
-  box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.3);
-}
-
-.project-card:hover img {
-  transform: scale(1.05);
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -9px;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #38bdf8;
-  border: 4px solid #0f172a;
-  z-index: 10;
-}
-
-/* Efecto de resplandor para la foto de perfil */
-.profile-glow {
-  box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.5);
 }

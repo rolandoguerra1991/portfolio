@@ -1,2 +1,341 @@
 @import "./styles.css";
 @import "tailwindcss";
+
+@layer base {
+	.page-root {
+		@apply scroll-smooth;
+	}
+
+	.page {
+		@apply overflow-x-hidden;
+	}
+}
+
+@layer components {
+	.page__container {
+		@apply container mx-auto px-6;
+	}
+
+	.site-nav {
+		@apply fixed w-full z-50 py-4;
+		background: rgba(30, 41, 59, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.site-nav__inner {
+		@apply flex justify-between items-center;
+	}
+
+	.site-nav__brand {
+		@apply text-2xl font-bold;
+		background: linear-gradient(90deg, #38bdf8, #818cf8);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.site-nav__links {
+		@apply hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium;
+	}
+
+	.site-nav__link {
+		@apply hover:text-sky-400 transition;
+	}
+
+	.hero {
+		@apply min-h-screen flex items-center justify-center pt-24 pb-12;
+	}
+
+	.hero__inner {
+		@apply flex flex-col items-center text-center;
+	}
+
+	.hero__profile {
+		@apply mb-8 relative;
+	}
+
+	.hero__profile-ring {
+		@apply w-40 h-40 md:w-48 md:h-48 rounded-full p-1;
+		background: linear-gradient(135deg, #38bdf8, #818cf8);
+		box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.5);
+	}
+
+	.hero__profile-frame {
+		@apply w-full h-full rounded-full overflow-hidden bg-slate-800 border-4;
+		border-color: #0f172a;
+	}
+
+	.hero__profile-image {
+		@apply w-full h-full object-cover;
+	}
+
+	.hero__profile-badge {
+		@apply absolute bottom-2 right-2 bg-sky-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter;
+	}
+
+	.hero__title {
+		@apply text-4xl md:text-7xl font-bold mb-6;
+	}
+
+	.hero__title-accent {
+		background: linear-gradient(90deg, #38bdf8, #818cf8);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.hero__subtitle {
+		@apply text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10;
+	}
+
+	.hero__actions {
+		@apply flex justify-center space-x-4;
+	}
+
+	.hero__button {
+		@apply px-8 py-3 rounded-full font-semibold transition;
+	}
+
+	.hero__button--primary {
+		@apply bg-sky-500 hover:bg-sky-600 text-white shadow-lg shadow-sky-500/20;
+	}
+
+	.hero__button--ghost {
+		@apply hover:bg-white/10;
+		background: rgba(30, 41, 59, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.stack {
+		@apply py-20 bg-slate-900/30;
+	}
+
+	.stack__header {
+		@apply text-center mb-12;
+	}
+
+	.stack__title {
+		@apply text-3xl md:text-4xl font-bold mb-4;
+	}
+
+	.stack__divider {
+		@apply w-20 h-1 bg-sky-500 mx-auto rounded-full;
+	}
+
+	.stack__grid {
+		@apply grid grid-cols-2 md:grid-cols-4 gap-6;
+	}
+
+	.stack__card {
+		@apply p-6 rounded-2xl flex flex-col items-center transition duration-300;
+		background: rgba(30, 41, 59, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.stack__card:hover {
+		transform: translateY(-5px);
+		border-color: #38bdf8;
+		box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.3);
+	}
+
+	.stack__icon {
+		@apply text-4xl mb-3;
+	}
+
+	.stack__icon--mono {
+		@apply text-3xl font-bold;
+	}
+
+	.stack__icon--blue {
+		@apply text-blue-500;
+	}
+
+	.stack__icon--emerald {
+		@apply text-emerald-500;
+	}
+
+	.stack__icon--emerald-soft {
+		@apply text-emerald-400;
+	}
+
+	.stack__icon--sky {
+		@apply text-sky-400;
+	}
+
+	.stack__icon--yellow {
+		@apply text-yellow-400;
+	}
+
+	.stack__icon--lime {
+		@apply text-lime-500;
+	}
+
+	.stack__icon--orange {
+		@apply text-orange-500;
+	}
+
+	.stack__icon--green {
+		@apply text-green-500;
+	}
+
+	.stack__label {
+		@apply font-semibold;
+	}
+
+	.stack__hint {
+		@apply text-xs text-gray-500;
+	}
+
+	.projects {
+		@apply py-20;
+	}
+
+	.projects__header {
+		@apply text-center mb-12;
+	}
+
+	.projects__title {
+		@apply text-3xl md:text-4xl font-bold mb-4;
+	}
+
+	.projects__divider {
+		@apply w-20 h-1 bg-sky-500 mx-auto rounded-full;
+	}
+
+	.projects__grid {
+		@apply grid md:grid-cols-2 gap-8;
+	}
+
+	.projects__card {
+		@apply rounded-3xl overflow-hidden transition duration-500;
+		background: rgba(30, 41, 59, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.projects__media {
+		@apply h-64 overflow-hidden bg-slate-800 relative;
+	}
+
+	.projects__media-icon {
+		@apply absolute inset-0 flex items-center justify-center text-slate-700 text-6xl;
+	}
+
+	.projects__body {
+		@apply p-8;
+	}
+
+	.projects__name {
+		@apply text-2xl font-bold mb-2;
+	}
+
+	.projects__link {
+		@apply hover:text-sky-400 transition;
+	}
+
+	.projects__description {
+		@apply text-gray-400 mb-4;
+	}
+
+	.projects__tags {
+		@apply flex gap-3 flex-wrap;
+	}
+
+	.projects__tag {
+		@apply text-xs font-bold bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full border border-sky-500/20;
+	}
+
+	.projects__card:hover img {
+		transform: scale(1.05);
+	}
+
+	.experience {
+		@apply py-20 bg-slate-900/50;
+	}
+
+	.experience__container {
+		@apply max-w-4xl;
+	}
+
+	.experience__header {
+		@apply text-center mb-12;
+	}
+
+	.experience__title {
+		@apply text-3xl md:text-4xl font-bold mb-4;
+	}
+
+	.experience__divider {
+		@apply w-20 h-1 bg-sky-500 mx-auto rounded-full;
+	}
+
+	.experience__timeline {
+		@apply border-l-2 border-slate-800 ml-4 md:ml-0 md:mx-auto space-y-12 relative;
+	}
+
+	.experience__item {
+		@apply relative pl-8;
+	}
+
+	.experience__item::before {
+		content: "";
+		position: absolute;
+		left: -9px;
+		top: 0;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		background: #38bdf8;
+		border: 4px solid #0f172a;
+		z-index: 10;
+	}
+
+	.experience__date {
+		@apply text-sky-400 font-bold text-sm;
+	}
+
+	.experience__role {
+		@apply text-xl font-bold;
+	}
+
+	.experience__company {
+		@apply text-sky-500 text-sm font-medium mb-1;
+	}
+
+	.experience__summary {
+		@apply text-gray-400 italic mb-2;
+	}
+
+	.experience__detail {
+		@apply text-gray-400;
+	}
+
+	.site-footer {
+		@apply py-16 border-t border-slate-800;
+	}
+
+	.site-footer__inner {
+		@apply text-center;
+	}
+
+	.site-footer__title {
+		@apply text-3xl font-bold mb-6;
+	}
+
+	.site-footer__subtitle {
+		@apply text-gray-400 mb-8 max-w-lg mx-auto;
+	}
+
+	.site-footer__links {
+		@apply flex justify-center space-x-6 text-gray-400;
+	}
+
+	.site-footer__link {
+		@apply hover:text-white transition text-3xl;
+	}
+
+	.site-footer__legal {
+		@apply mt-12 text-gray-600 text-sm;
+	}
+}
