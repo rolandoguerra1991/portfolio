@@ -1,0 +1,17 @@
+---
+const {
+  href,
+  label,
+  variant = "primary",
+  external = false,
+  className = "",
+} = Astro.props;
+
+const classes = ["button", `button--${variant}`, className].filter(Boolean).join(" ");
+const rel = external ? "noreferrer" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+<a href={href} class={classes} rel={rel} target={target}>
+  {label}
+</a>

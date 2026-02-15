@@ -7,6 +7,9 @@ const projectSchema = z.object({
   icon: z.string().optional(),
   order: z.number().int().optional(),
   link: z.string().url().optional(),
+  ctaText: z.string().optional(),
+  ctaUrl: z.string().url().optional(),
+  ctaExternal: z.boolean().optional(),
 });
 
 const projects = defineCollection({

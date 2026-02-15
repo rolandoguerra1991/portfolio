@@ -1,0 +1,6 @@
+---
+const { label, variant = "tag", className = "" } = Astro.props;
+const classes = ["badge", `badge--${variant}`, className].filter(Boolean).join(" ");
+---
+
+<span class={classes}>{label}</span>

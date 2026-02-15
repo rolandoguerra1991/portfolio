@@ -1,0 +1,15 @@
+---
+import Card from './Card.astro';
+
+const { iconClass = "", iconText = "", label, hint, delay = 0 } = Astro.props;
+---
+
+<Card className="reveal stack__card card--compact" style={`transition-delay: ${delay}s;`}>
+  {iconText ? (
+    <div class={iconClass}>{iconText}</div>
+  ) : (
+    <i class={iconClass}></i>
+  )}
+  <h3 class="stack__label">{label}</h3>
+  <p class="stack__hint">{hint}</p>
+</Card>

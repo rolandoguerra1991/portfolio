@@ -1,9 +1,16 @@
 ---
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+import Card from './Card.astro';
+
 const { project, index } = Astro.props;
+const ctaText = project?.ctaText ?? project?.cta?.text;
+const ctaUrl = project?.ctaUrl ?? project?.cta?.url;
+const ctaExternal = project?.ctaExternal ?? project?.cta?.external;
 ---
 
-<div
-  class="reveal projects__card"
+<Card
+  className="reveal projects__card"
   style={`transition-delay: ${0.1 + (index ?? 0) * 0.1}s;`}
 >
   <div class="projects__media">
@@ -24,10 +31,15 @@ const { project, index } = Astro.props;
     <p class="projects__description">{project?.description}</p>
     {project?.tags?.length ? (
       <div class="projects__tags">
-        {project.tags.map((tag) => (
-          <span class="projects__tag">{tag}</span>
+        {project.tags.map((tag: unknown) => (
+          <Badge label={tag} />
         ))}
       </div>
     ) : null}
+    {ctaText && ctaUrl ? (
+      <div class="projects__actions">
+        <Button href={ctaUrl} label={ctaText} external={ctaExternal} />
+      </div>
+    ) : null}
   </div>
-</div>
+</Card>

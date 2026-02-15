@@ -1,8 +1,12 @@
 ---
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectsEmpty from '../components/ProjectsEmpty.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import StackCard from '../components/StackCard.astro';
 
 const projects = (await getCollection('projects'))
     .map((entry: { id: any; data: any; }) => ({
@@ -10,6 +14,94 @@ const projects = (await getCollection('projects'))
         ...entry.data,
     }))
     .sort((a: { order: any; }, b: { order: any; }) => (a.order ?? 999) - (b.order ?? 999));
+
+const stackItems = [
+    {
+        iconClass: 'stack__icon stack__icon--blue fab fa-js-square',
+        label: 'TypeScript',
+        hint: 'Robust Code',
+        delay: 0.1,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--mono stack__icon--emerald-soft',
+        iconText: 'N',
+        label: 'Nuxt.js',
+        hint: 'Framework',
+        delay: 0.2,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--emerald fab fa-vuejs',
+        label: 'Vue.js',
+        hint: 'UI Library',
+        delay: 0.3,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--sky fas fa-wind',
+        label: 'Tailwind',
+        hint: 'Atomic CSS',
+        delay: 0.4,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--yellow fas fa-bolt',
+        label: 'Vite',
+        hint: 'Fast Build',
+        delay: 0.5,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--lime fas fa-vial',
+        label: 'Vitest',
+        hint: 'Testing',
+        delay: 0.6,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--orange fab fa-git-alt',
+        label: 'Git',
+        hint: 'Version Control',
+        delay: 0.7,
+    },
+    {
+        iconClass: 'stack__icon stack__icon--green fab fa-node-js',
+        label: 'Node.js',
+        hint: 'Runtime',
+        delay: 0.8,
+    },
+];
+
+const experienceItems = [
+    {
+        date: 'Jan 2023 - Feb 2026',
+        role: 'Software Engineer',
+        company: '8020REI • Full-time • Remote (USA)',
+        summary:
+            'Developed core frontend solutions using Nuxt, Vue, and TypeScript, leveraging Atomic Design for high-quality reusable components.',
+        detail:
+            'Took ownership of the frontend development for key tools, significantly enhancing user experience and platform interface consistency.',
+        delay: 0.1,
+    },
+    {
+        date: 'Dec 2020 - Jan 2023',
+        role: 'Web Developer',
+        company: '4casters • Freelance',
+        detail:
+            'MEVN stack development (MongoDB, Express, Vue.js, Node.js), utilizing Bootstrap and modern frontend practices.',
+        delay: 0.2,
+    },
+    {
+        date: 'Sep 2018 - Jan 2023',
+        role: 'Web Developer',
+        company: 'Grupo Hostienda • Spain',
+        detail:
+            'Fullstack development focused on PHP (Laravel) and Vue.js for enterprise-level web applications.',
+        delay: 0.3,
+    },
+    {
+        date: 'Feb 2018 - Sep 2018',
+        role: 'Web Developer',
+        company: 'PinttoSoft • Venezuela',
+        detail: 'Frontend and backend tasks using Laravel and Bootstrap for various client projects.',
+        delay: 0.4,
+    },
+];
 ---
 
 <html lang="en" class="page-root">
@@ -63,8 +155,13 @@ const projects = (await getCollection('projects'))
                 I am a frontend web developer with experience in creating reusable components using the Atomic Design methodology.
             </p>
             <div class="reveal hero__actions" style="transition-delay: 0.4s;">
-                <a href="#projects" class="hero__button hero__button--primary">View Projects</a>
-                <a href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/" target="_blank" class="hero__button hero__button--ghost">LinkedIn</a>
+                <Button href="#projects" label="View Projects" />
+                <Button
+                    href="https://www.linkedin.com/in/rolando-guerra-84a5ba117/"
+                    label="LinkedIn"
+                    variant="ghost"
+                    external
+                />
             </div>
         </div>
     </section>
@@ -72,52 +169,18 @@ const projects = (await getCollection('projects'))
     <!-- Tools Section -->
     <section id="stack" class="stack">
         <div class="page__container">
-            <div class="stack__header">
-                <h2 class="reveal stack__title">Full Stack & Tools</h2>
-                <div class="reveal stack__divider"></div>
-            </div>
+            <SectionHeader title="Full Stack & Tools" />
 
             <div class="stack__grid">
-                <div class="reveal stack__card" style="transition-delay: 0.1s;">
-                    <i class="stack__icon stack__icon--blue fab fa-js-square"></i>
-                    <h3 class="stack__label">TypeScript</h3>
-                    <p class="stack__hint">Robust Code</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.2s;">
-                    <div class="stack__icon stack__icon--mono stack__icon--emerald-soft">N</div>
-                    <h3 class="stack__label">Nuxt.js</h3>
-                    <p class="stack__hint">Framework</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.3s;">
-                    <i class="stack__icon stack__icon--emerald fab fa-vuejs"></i>
-                    <h3 class="stack__label">Vue.js</h3>
-                    <p class="stack__hint">UI Library</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.4s;">
-                    <i class="stack__icon stack__icon--sky fas fa-wind"></i>
-                    <h3 class="stack__label">Tailwind</h3>
-                    <p class="stack__hint">Atomic CSS</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.5s;">
-                    <i class="stack__icon stack__icon--yellow fas fa-bolt"></i>
-                    <h3 class="stack__label">Vite</h3>
-                    <p class="stack__hint">Fast Build</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.6s;">
-                    <i class="stack__icon stack__icon--lime fas fa-vial"></i>
-                    <h3 class="stack__label">Vitest</h3>
-                    <p class="stack__hint">Testing</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.7s;">
-                    <i class="stack__icon stack__icon--orange fab fa-git-alt"></i>
-                    <h3 class="stack__label">Git</h3>
-                    <p class="stack__hint">Version Control</p>
-                </div>
-                <div class="reveal stack__card" style="transition-delay: 0.8s;">
-                    <i class="stack__icon stack__icon--green fab fa-node-js"></i>
-                    <h3 class="stack__label">Node.js</h3>
-                    <p class="stack__hint">Runtime</p>
-                </div>
+                {stackItems.map((item) => (
+                    <StackCard
+                        iconClass={item.iconClass}
+                        iconText={item.iconText}
+                        label={item.label}
+                        hint={item.hint}
+                        delay={item.delay}
+                    />
+                ))}
             </div>
         </div>
     </section>
@@ -125,10 +188,7 @@ const projects = (await getCollection('projects'))
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="page__container">
-            <div class="projects__header">
-                <h2 class="reveal projects__title">Featured Projects</h2>
-                <div class="reveal projects__divider"></div>
-            </div>
+            <SectionHeader title="Featured Projects" />
 
             {projects.length ? (
                 <div class="projects__grid">
@@ -145,44 +205,19 @@ const projects = (await getCollection('projects'))
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="page__container experience__container">
-            <div class="experience__header">
-                <h2 class="reveal experience__title">Professional Experience</h2>
-                <div class="reveal experience__divider"></div>
-            </div>
+            <SectionHeader title="Professional Experience" />
 
             <div class="experience__timeline">
-                <!-- Software Engineer - 8020REI -->
-                <div class="reveal experience__item" style="transition-delay: 0.1s;">
-                    <span class="experience__date">Jan 2023 - Feb 2026</span>
-                    <h3 class="experience__role">Software Engineer</h3>
-                    <p class="experience__company">8020REI • Full-time • Remote (USA)</p>
-                    <p class="experience__summary">Developed core frontend solutions using Nuxt, Vue, and TypeScript, leveraging Atomic Design for high-quality reusable components.</p>
-                    <p class="experience__detail">Took ownership of the frontend development for key tools, significantly enhancing user experience and platform interface consistency.</p>
-                </div>
-
-                <!-- Web Developer - 4casters -->
-                <div class="reveal experience__item" style="transition-delay: 0.2s;">
-                    <span class="experience__date">Dec 2020 - Jan 2023</span>
-                    <h3 class="experience__role">Web Developer</h3>
-                    <p class="experience__company">4casters • Freelance</p>
-                    <p class="experience__detail">MEVN stack development (MongoDB, Express, Vue.js, Node.js), utilizing Bootstrap and modern frontend practices.</p>
-                </div>
-
-                <!-- Web Developer - Grupo Hostienda -->
-                <div class="reveal experience__item" style="transition-delay: 0.3s;">
-                    <span class="experience__date">Sep 2018 - Jan 2023</span>
-                    <h3 class="experience__role">Web Developer</h3>
-                    <p class="experience__company">Grupo Hostienda • Spain</p>
-                    <p class="experience__detail">Fullstack development focused on PHP (Laravel) and Vue.js for enterprise-level web applications.</p>
-                </div>
-
-                <!-- Web Developer - PinttoSoft -->
-                <div class="reveal experience__item" style="transition-delay: 0.4s;">
-                    <span class="experience__date">Feb 2018 - Sep 2018</span>
-                    <h3 class="experience__role">Web Developer</h3>
-                    <p class="experience__company">PinttoSoft • Venezuela</p>
-                    <p class="experience__detail">Frontend and backend tasks using Laravel and Bootstrap for various client projects.</p>
-                </div>
+                {experienceItems.map((item) => (
+                    <ExperienceItem
+                        date={item.date}
+                        role={item.role}
+                        company={item.company}
+                        summary={item.summary}
+                        detail={item.detail}
+                        delay={item.delay}
+                    />
+                ))}
             </div>
         </div>
     </section>

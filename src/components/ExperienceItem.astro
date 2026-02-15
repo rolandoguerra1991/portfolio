@@ -1,0 +1,11 @@
+---
+const { date, role, company, summary, detail, delay = 0 } = Astro.props;
+---
+
+<div class="reveal experience__item" style={`transition-delay: ${delay}s;`}>
+  <span class="experience__date">{date}</span>
+  <h3 class="experience__role">{role}</h3>
+  <p class="experience__company">{company}</p>
+  {summary ? <p class="experience__summary">{summary}</p> : null}
+  <p class="experience__detail">{detail}</p>
+</div>
