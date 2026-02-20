@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--sky fas fa-wind",
+  "label": "Tailwind",
+  "hint": "Atomic CSS",
+  "delay": 0.4,
+  "order": 4
+}

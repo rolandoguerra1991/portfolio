@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--emerald fab fa-vuejs",
+  "label": "Vue.js",
+  "hint": "UI Library",
+  "delay": 0.3,
+  "order": 3
+}

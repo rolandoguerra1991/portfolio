@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--blue fab fa-js-square",
+  "label": "TypeScript",
+  "hint": "Robust Code",
+  "delay": 0.1,
+  "order": 1
+}

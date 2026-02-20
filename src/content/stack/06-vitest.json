@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--lime fas fa-vial",
+  "label": "Vitest",
+  "hint": "Testing",
+  "delay": 0.6,
+  "order": 6
+}

@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--green fab fa-node-js",
+  "label": "Node.js",
+  "hint": "Runtime",
+  "delay": 0.8,
+  "order": 8
+}

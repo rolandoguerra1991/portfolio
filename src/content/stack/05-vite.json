@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--yellow fas fa-bolt",
+  "label": "Vite",
+  "hint": "Fast Build",
+  "delay": 0.5,
+  "order": 5
+}

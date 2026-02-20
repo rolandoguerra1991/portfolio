@@ -15,100 +15,26 @@ const projects = (await getCollection('projects'))
     }))
     .sort((a: { order: any; }, b: { order: any; }) => (a.order ?? 999) - (b.order ?? 999));
 
-const stackItems = [
-    {
-        iconClass: 'stack__icon stack__icon--blue fab fa-js-square',
-        label: 'TypeScript',
-        hint: 'Robust Code',
-        delay: 0.1,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--mono stack__icon--emerald-soft',
-        iconText: 'N',
-        label: 'Nuxt.js',
-        hint: 'Framework',
-        delay: 0.2,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--emerald fab fa-vuejs',
-        label: 'Vue.js',
-        hint: 'UI Library',
-        delay: 0.3,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--sky fas fa-wind',
-        label: 'Tailwind',
-        hint: 'Atomic CSS',
-        delay: 0.4,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--yellow fas fa-bolt',
-        label: 'Vite',
-        hint: 'Fast Build',
-        delay: 0.5,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--lime fas fa-vial',
-        label: 'Vitest',
-        hint: 'Testing',
-        delay: 0.6,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--orange fab fa-git-alt',
-        label: 'Git',
-        hint: 'Version Control',
-        delay: 0.7,
-    },
-    {
-        iconClass: 'stack__icon stack__icon--green fab fa-node-js',
-        label: 'Node.js',
-        hint: 'Runtime',
-        delay: 0.8,
-    },
-];
+const stackItems = (await getCollection('stack'))
+    .map((entry) => ({
+        id: entry.id,
+        ...entry.data,
+    }))
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
-const experienceItems = [
-    {
-        date: 'Jan 2023 - Feb 2026',
-        role: 'Software Engineer',
-        company: '8020REI • Full-time • Remote (USA)',
-        summary:
-            'Developed core frontend solutions using Nuxt, Vue, and TypeScript, leveraging Atomic Design for high-quality reusable components.',
-        detail:
-            'Took ownership of the frontend development for key tools, significantly enhancing user experience and platform interface consistency.',
-        delay: 0.1,
-    },
-    {
-        date: 'Dec 2020 - Jan 2023',
-        role: 'Web Developer',
-        company: '4casters • Freelance',
-        detail:
-            'MEVN stack development (MongoDB, Express, Vue.js, Node.js), utilizing Bootstrap and modern frontend practices.',
-        delay: 0.2,
-    },
-    {
-        date: 'Sep 2018 - Jan 2023',
-        role: 'Web Developer',
-        company: 'Grupo Hostienda • Spain',
-        detail:
-            'Fullstack development focused on PHP (Laravel) and Vue.js for enterprise-level web applications.',
-        delay: 0.3,
-    },
-    {
-        date: 'Feb 2018 - Sep 2018',
-        role: 'Web Developer',
-        company: 'PinttoSoft • Venezuela',
-        detail: 'Frontend and backend tasks using Laravel and Bootstrap for various client projects.',
-        delay: 0.4,
-    },
-];
+const experienceItems = (await getCollection('experience'))
+    .map((entry) => ({
+        id: entry.id,
+        ...entry.data,
+    }))
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 ---
 
 <html lang="en" class="page-root">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+        <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Rolando Guerra | Frontend Developer</title>
@@ -239,20 +165,6 @@ const experienceItems = [
         </div>
     </footer>
 
-    <script>
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 80;
-                if (elementTop < windowHeight - elementVisible) {
-                    el.classList.add("reveal--active");
-                }
-            });
-        }
-        window.addEventListener("scroll", reveal);
-        document.addEventListener("DOMContentLoaded", () => setTimeout(reveal, 100));
-    </script>
+    <script src="../scripts/reveal.js"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+{
+  "iconClass": "stack__icon stack__icon--mono stack__icon--emerald-soft",
+  "iconText": "N",
+  "label": "Nuxt.js",
+  "hint": "Framework",
+  "delay": 0.2,
+  "order": 2
+}

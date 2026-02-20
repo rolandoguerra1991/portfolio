@@ -1,0 +1,7 @@
+{
+  "iconClass": "stack__icon stack__icon--orange fab fa-git-alt",
+  "label": "Git",
+  "hint": "Version Control",
+  "delay": 0.7,
+  "order": 7
+}
